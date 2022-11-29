@@ -1,0 +1,80 @@
+.title{
+   display : flex;
+   justify-content : center;
+   color : #1691E2;
+   font-size : 30px;
+   font-weight : 600;
+}
+.header, .footer{
+    background-color:#102e9e !important;
+}
+.content-main{
+ padding-left : 200px;
+ padding-right : 200px;
+}
+.blue-color{
+    color: #1691E2;
+    font-weight : bold;
+}
+.title-form{
+ color : #fff;
+ background-color : #102e9e;
+ padding : 20px
+}
+.form-main{
+  background-color : #1691E2;
+  padding :20px;
+}
+.name-item {
+  color : #fff;
+  font-weight : bold;
+}
+.text-input , .title-car{
+   color : #fff;
+
+}
+.title-car{
+font-weight : bold;
+}
+.mess_user{
+    border-color: #e5285d;
+}
+.btn button{
+    background-color:  #102e9e;
+    width : 650px;
+    padding-top: 20px;
+    padding-bottom : 20px;
+    color : #fff;
+    border : none;
+}
+.title-info , .title-item{
+    font-size : 22px;
+    color : #000;
+    font-weight : bold;
+}
+.item-contents{
+    padding-top:10px;
+    padding-bottom : 10px;
+}
+.btn-doctor{
+    padding:10px;
+    border : none;
+    background : #102E9E;
+    color : #fff;
+}
+.btn-doctor2{
+    padding:10px;
+    border : none;
+    background : #1691E2;
+    color : #fff;
+}
+.box-item-contact {
+    padding-top : 10px;
+    padding-bottom : 10px;
+}
+.img {
+   margin : 0px;
+}
+h3{
+    color: #1691E2;
+}

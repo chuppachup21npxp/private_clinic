@@ -1,0 +1,47 @@
+{% extends 'layout/base.html' %}
+ {% block title %} Liên Hệ {% endblock %}
+{% block content %}
+ <div class="title">
+     <p>THÔNG TIN LIÊN HỆ </p>
+  </div>
+  <div class="container row row box-item-contact">
+    <div class="box-right col-12 col-sm-6">
+      <img src="{{ url_for('static', filename='image/benh-vien-da-khoa-tam-anh.webp') }}" width="100%">
+    </div>
+   <div class="box-left col-12 col-sm-6">
+     <h3>Bệnh viện Đa khoa Tâm Anh Hà Nội</h3>
+     <ul>
+      <li>108 Phố Hoàng Như Tiếp , Phường Bồ Đề , Long Biên , Thành Phố Hà Nội  </li>
+      <li>1800 6858 - 024 7106 6858</li>
+      <li>cskh@tamanhhopital.vn</li>
+      <li>https://www.facebook.com/benhvientamanh</li>
+     </ul>
+   </div>
+  </div>
+    <div class="container row box-item-contact">
+    <div class="box-right col-12 col-sm-6">
+      <img src="{{ url_for('static', filename='image/1649912880_6257ac3067a584.webp') }}" width="100%">
+    </div>
+   <div class="box-left col-12 col-sm-6">
+     <h3>Bệnh viện Đa khoa Tâm Anh TP.HCM</h3>
+     <ul>
+      <li>2B Phổ Quang, Phường 2, Quận Tân Bình, Thành phố Hồ Chí Minh  </li>
+      <li>1800 6858 - 024 7106 6858</li>
+      <li>cskh@tamanhhopital.vn</li>
+      <li>https://www.facebook.com/benhvientamanh</li>
+     </ul>
+   </div>
+  </div>
+
+ <div class="title">
+     <p>LIÊN HỆ VỚI CHÚNG TÔI </p>
+  </div>
+  <div class="img row">
+               <div class="img-item col-6">
+                   <img src="{{ url_for('static', filename='image/bg_ta1.jpg') }}" alt="" width="100%">
+               </div>
+               <div class="img-item col-6" >
+                   <img src="{{ url_for('static', filename='image/bg_ta2.jpg') }}" alt="" width="100%">
+               </div>
+           </div>
+{% endblock %}

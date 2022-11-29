@@ -1,0 +1,79 @@
+{% extends 'layout/base.html' %}
+ {% block title %} Trang Chủ {% endblock %}
+{% block content %}
+    <div class="content">
+        <div class="title">
+            <p>ĐĂNG KÝ KHÁM BỆNH</p>
+        </div>
+        <div class="content-main">
+            <p>Quý khách hàng có nhu cầu đặt hẹn khám tại Hệ thống <span class="blue-color"> Bệnh viện Đa khoa Tâm Anh</span> , xin vui lòng thực hiện theo hướng dẫn:</p>
+            <ul>
+            <li>Đặt hẹn bằng cách gọi tổng đài Chăm sóc khách hàng tại số <span class="blue-color">0287 102 6789 – 0287 300 6858(Bệnh viện Đa khoa Tâm Anh TPHCM) hoặc 1800 6858 – 024 7106 6858 (Bệnh viện Đa khoa Tâm Anh Hà Nội)</span>
+            </li>
+            <li>
+                Đặt hẹn trực tuyến bằng cách điền thông tin vào <span class="blue-color">mẫu bên dưới.</span>
+            </li>
+            <li>
+                Xin lưu ý, trong các trường hợp khẩn cấp, quý khách vui lòng đến ngay cơ sở y tế gần nhất hoặc đến <span class="blue-color">trực tiếp Hệ thống bệnh viện Đa khoa Tâm Anh</span>
+            </li>
+        </ul>
+            <div class="form">
+
+                <div class="title-form">ĐĂNG KÝ KHÁM BỆNH</div>
+
+                <div class="form-main">
+                    <form action="">
+                            <div class="name-item">Chọn địa điểm khám</div>
+                 <input type="radio" id="hanoi" name="fav_language" value="BVĐK Tâm Anh Hà Nội">
+               <label for="hanoi" class="text-input">BVĐK Tâm Anh Hà Nội</label>
+               <input type="radio" id="hcm" name="fav_language" value="BVĐK Tâm Anh TPHCM">
+                    <label for="hcm" class="text-input">BVĐK Tâm Anh TPHCM</label><br>
+
+                 <div class="name-item">Chọn loại dịch vụ khám</div>
+                 <input type="radio" id="tronggio" name="dichvu" value="Khám Trong Giờ">
+               <label for="tronggio" class="text-input">Khám Trong Giờ</label>
+               <input type="radio" id="ngoaigio" name="dichvu" value="Khám Ngoài Giờ">
+                    <label for="ngoaigio" class="text-input">Khám Ngoài Giờ</label>
+                    <input type="radio" id="online" name="dichvu" value="Khám Online">
+                    <label for="online" class="text-input">Khám Online</label><br>
+                    <div class="title-car">
+                        Vui lòng chọn địa điểm khám & dịch vụ khám truước
+                    </div>
+                    <select name="cars" id="cars">
+                <option value="taimuihong">Chuyên Khoa Tai Mũi Họng</option>
+                <option value="thankinh">Chuyên Khoa Thần Kinh</option>
+                    </select>
+                     <select name="car" id="car">
+                         <option value="phutuan">Bác Sĩ Nguyễn Phú Tuấn</option>
+                         <option value="nguyenphuc">Bác Sĩ Nguyễn Phúc</option>
+                         <option value="phucnguyen">Bác Sĩ Phúc Nguyễn</option>
+                    </select>
+                      <div class="title-car">
+                         Vấn đề sức khỏe cần khám
+                      </div>
+                        <div class="mess_user">
+                             <textarea autocomplete="off" rows="4" cols="90" placeholder="Nhập tình trạng sức khoẻ của bạn, câu hỏi dành cho bác sĩ và các vấn đề sức khỏe cần khám" class="el-textarea__inner" style="min-height: 33px;"></textarea>
+                        </div>
+                        <div class="btn">
+                            <button type="submit">Nhập Thông Tin Người Cần Khám</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="title">
+                    <p>LIÊN HỆ VỚI CHÚNG TÔI</p>
+                </div>
+            </div>
+        </div>
+           <div class="img row">
+               <div class="img-item col-6">
+                   <img src="{{ url_for('static', filename='image/bg_ta1.jpg') }}" alt="" width="100%">
+               </div>
+               <div class="img-item col-6" >
+                   <img src="{{ url_for('static', filename='image/bg_ta2.jpg') }}" alt="" width="100%">
+               </div>
+           </div>
+    </div>
+
+
+
+{% endblock %}

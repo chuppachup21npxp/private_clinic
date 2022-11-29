@@ -1,0 +1,26 @@
+
+<nav class="navbar navbar-expand-sm  navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='image/logo_desk.webp') }}" width="150px"> </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Trang chủ</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="/info">Giới Thiệu</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="/doctor">Bác Sĩ</a>
+                </li> <li class="nav-item">
+                    <a class="nav-link" href="/contact">Liên Hệ</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
