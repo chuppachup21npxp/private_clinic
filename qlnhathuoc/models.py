@@ -66,6 +66,7 @@ class TypeMedicine(BaseModel):
     type_medicine_name = Column(String(60), nullable=False)
     description = descriptions = Column(String(300))
 
+    thuoc = relationship('Medicine', backref='typemedicine', lazy=True)
 
 class Medicine(BaseModel):
     medicine_name = Column(String(60), nullable=False)
