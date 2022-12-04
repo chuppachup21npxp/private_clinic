@@ -22,7 +22,7 @@ class UserRole(UserEnum): ##Quyền người dùng##
 class User(BaseModel, UserMixin): ##Người dùng##
     username = Column(String(50), nullable=False, unique=True)
     password = Column(String(50), nullable=False)
-    fullname = Column(String(50), nullable=False, unique=True)
+    fullname = Column(String(50), nullable=False)
     sex = Column(String(10), nullable=False)
     avatar = Column(String(200), default='NULL')
     created_date = Column(DateTime, default=datetime.now())
@@ -31,6 +31,9 @@ class User(BaseModel, UserMixin): ##Người dùng##
     user_role = Column(Enum(QuyenNguoiDung), default=QuyenNguoiDung.USER)
 
     phieuhenkham = relationship('DateMedical', backref='user', lazy=True)
+
+    def __str__(self):
+        return self.fullname
 
 class DateMedical(BaseModel): ##Phiếu hẹn khám##
     date_medical = Column(DateTime, default=datetime.now())
@@ -47,6 +50,9 @@ class Patient(BaseModel): ##Bệnh nhân##
     phone_number = Column(String(12), nullable=False)
 
     phieukhambenh = relationship('MedicalRecord', backref='patient', lazy=True)
+
+    def __str__(self):
+        return self.patient_name
 
 class MedicalRecord(BaseModel): ##Phiếu khám bệnh##
     predict_illness = Column(String(100), nullable=False)
@@ -68,6 +74,9 @@ class TypeMedicine(BaseModel):
 
     thuoc = relationship('Medicine', backref='typemedicine', lazy=True)
 
+    def __str__(self):
+        return self.type_medicine_name
+
 class Medicine(BaseModel):
     medicine_name = Column(String(60), nullable=False)
     descriptions = Column(String(500), nullable=False)
@@ -76,6 +85,9 @@ class Medicine(BaseModel):
     type_medicine_id = Column(Integer, ForeignKey(TypeMedicine.id), nullable=False)
 
     donthuoc = relationship('Prescription', backref='medicine', lazy=True)
+
+    def __str__(self):
+        return self.medicine_name
 
 class Prescription(BaseModel): ##Đơn thuốc##
     receipt_id = Column(Integer, ForeignKey(Receipt.id), nullable=False)
