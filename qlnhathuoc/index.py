@@ -1,20 +1,28 @@
 from flask import render_template, request, redirect, session, jsonify
-from qlnhathuoc import app, dao, admin, login, utils
-from flask_login import login_user, logout_user
+from qlnhathuoc import app, dao, admin, login, __init__ , models
+from flask_login import login_user, logout_user, login_required
 from qlnhathuoc.decorators import annonymous_user
 import cloudinary.uploader
 
 
 @app.route("/")
 def index():
-    return render_template('index.html',)
+    return render_template('index.html')
 @app.route("/info")
 def info():
     return render_template('info.html')
 
 @app.route("/doctor")
 def doctor():
+    login_my_user()
     return render_template('doctor.html')
+
+@app.route("/doctor")
+@login_required
+def doctor_checkup_medical():
+
+    return render_template('doctor.html')
+
 
 @app.route("/contact")
 def contact():
@@ -35,22 +43,22 @@ def login_admin():
 @app.route('/register', methods=['get', 'post'])
 def register():
     err_msg = ''
-    if request.method.__eq__('POST'):
-        password = request.form['password']
-        confirm = request.form['confirm']
+    if request.method.__eq__('post'):
+        name = request.form['name']
+        username = request.form.get['username']
+        password = request.form.get['password']
+        confirm = request.form.get['confirm']
+        avatar = request.form.get['avatar']
+
         if password.__eq__(confirm):
-            avatar = ''
-            if request.files:
-                res = cloudinary.uploader.upload(request.files['avatar'])
-                avatar = res['secure_url']
 
             try:
-                dao.register(name=request.form['name'],
-                             username=request.form['username'],
+                dao.register(name=name,
+                             username=username,
                              password=password,
                              avatar=avatar)
 
-                return redirect('/login')
+                return redirect(url_for('login'))
             except:
                 err_msg = 'Hệ thống đang có lỗi! Vui lòng quay lại sau!'
         else:
@@ -67,10 +75,13 @@ def login_my_user():
         password = request.form['password']
 
         user = dao.auth_user(username=username, password=password)
+
         if user:
             login_user(user=user)
 
             n = request.args.get("next")
+            if user.user_role == UserRole.DOCTOR:
+                return redirect('/doctor', user=user)
             return redirect(n if n else '/')
 
     return render_template('login.html')
@@ -86,5 +97,6 @@ def load_user(user_id):
     return dao.get_user_by_id(user_id)
 
 
-if _name_ == '_main_':
+if __name__ == '__main__':
+    from qlnhathuoc.admin import *
     app.run(debug=True)

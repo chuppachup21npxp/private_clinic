@@ -1,54 +1,45 @@
 {% extends 'layout/base.html' %}
- {% block title %} Bác Sĩ{% endblock %}
+{% block title %} Bác Sĩ{% endblock %}
 {% block content %}
- <div class="banner">
-  <img src="{{ url_for('static', filename='image/banner-chuyen-gia-bac-si-desk.jpg') }}" width="100%">
+<div class="banner">
+    <img src="{{ url_for('static', filename='image/banner-chuyen-gia-bac-si-desk.jpg') }}" width="100%">
 </div>
- <div class="title">
-     <p>CHUYÊN GIA - BÁC SĨ</p>
-  </div>
- <div class="container">
-  <div class="row item-contents">
-   <div class="item-doctor col-6 col-sm-4">
-     <img src="{{ url_for('static', filename='image/bac-pham-nguyen-vinh.webp') }}" width="100%">
-   </div>
-   <div class="item-doctor col-6 col-sm-8">
-    <div class="title-item">PGS.TS.BS PHẠM NGUYỄN VINH</div>
-    <i>Giám đốc Trung tâm Tim mạch
-        Bệnh viện Đa khoa Tâm Anh TP.HCM</i>
-    <p>PGS.TS.BS Phạm Nguyễn Vinh là một trong những chuyên gia đầu ngành trong lĩnh vực Nội tim mạch tại Việt Nam. Sau khi tốt nghiệp Bác sĩ Y khoa chuyên khoa Tim mạch trường Đại học Y khoa Sài Gòn, bác sĩ Phạm Nguyễn Vinh sang Pháp tu nghiệp trong hai...</p>
-    <button class="btn-doctor">ĐẶT LỊCH HẸN</button>
-    <button class="btn-doctor2">XEM CHI TIẾT</button>
-   </div>
-  </div>
-  <div class="row item-contents">
-   <div class="item-doctor col-6 col-sm-4">
-     <img src="{{ url_for('static', filename='image/giao-su-tran-quan-anh.jpg') }}" width="100%">
-   </div>
-   <div class="item-doctor col-6 col-sm-8">
-    <div class="title-item">NGND.GS.TS.BS TRẦN QUÁN ANH</div>
-    <i>Trưởng khoa Khoa Nam học
-Bệnh viện Đa khoa Tâm Anh Hà Nội</i>
-    <p>NGND.GS.TS.BS Trần Quán Anh là người đầu tiên đặt nền móng cho ngành Nam học Việt Nam. Ông là Tổng Thư ký Hội Tiết niệu - Thận học Việt Nam, Hội viên Hội Tiết niệu thế giới (S.I.U), là người khởi xướng xây dựng phân khoa nam học, thuộc Khoa tiết...
-</p>
-    <button class="btn-doctor">ĐẶT LỊCH HẸN</button>
-    <button class="btn-doctor2">XEM CHI TIẾT</button>
-   </div>
-  </div>
-  <div class="row item-contents">
-   <div class="item-doctor col-6 col-sm-4">
-     <img src="{{ url_for('static', filename='image/bac-pham-nguyen-vinh.webp') }}" width="100%">
-   </div>
-   <div class="item-doctor col-6 col-sm-8">
-    <div class="title-item">PGS.TS.BS PHẠM NGUYỄN VINH</div>
-    <i>Giám đốc Trung tâm Tim mạch
-        Bệnh viện Đa khoa Tâm Anh TP.HCM</i>
-    <p>PGS.TS.BS Phạm Nguyễn Vinh là một trong những chuyên gia đầu ngành trong lĩnh vực Nội tim mạch tại Việt Nam. Sau khi tốt nghiệp Bác sĩ Y khoa chuyên khoa Tim mạch trường Đại học Y khoa Sài Gòn, bác sĩ Phạm Nguyễn Vinh sang Pháp tu nghiệp trong hai...</p>
-    <button class="btn-doctor">ĐẶT LỊCH HẸN</button>
-    <button class="btn-doctor2">XEM CHI TIẾT</button>
-   </div>
-  </div>
- </div>
+<div class="title">
+    <p>CHUYÊN GIA - BÁC SĨ</p>
+</div>
+<div class="container">
+    <div class="row item-contents">
+        <div class="item-doctor col-6 col-sm-4">
+            <img src="{{ url_for('static', filename='image/giao-su-tran-quan-anh.jpg') }}" width="100%">
+        </div>
+        <div class="item-doctor col-6 col-sm-8">
+            <div class="title-item">NGND.GS.TS.BS TRẦN QUÁN ANH</div>
+            <i>Trưởng khoa Khoa Nam học
+                Bệnh viện Đa khoa Tâm Anh Hà Nội</i>
+            <p>NGND.GS.TS.BS Trần Quán Anh là người đầu tiên đặt nền móng cho ngành Nam học Việt Nam. Ông là Tổng Thư ký
+                Hội Tiết niệu - Thận học Việt Nam, Hội viên Hội Tiết niệu thế giới (S.I.U), là người khởi xướng xây dựng
+                phân khoa nam học, thuộc Khoa tiết...
+            </p>
+            <button class="btn-doctor">ĐẶT LỊCH HẸN</button>
+            <button class="btn-doctor2">XEM CHI TIẾT</button>
+        </div>
+    </div>
+    <div class="row item-contents">
+        <div class="item-doctor col-6 col-sm-4">
+            <img src="{{ url_for('static', filename='image/bac-pham-nguyen-vinh.webp') }}" width="100%">
+        </div>
+        <div class="item-doctor col-6 col-sm-8">
+            <div class="title-item">PGS.TS.BS PHẠM NGUYỄN VINH</div>
+            <i>Giám đốc Trung tâm Tim mạch
+                Bệnh viện Đa khoa Tâm Anh TP.HCM</i>
+            <p>PGS.TS.BS Phạm Nguyễn Vinh là một trong những chuyên gia đầu ngành trong lĩnh vực Nội tim mạch tại Việt
+                Nam. Sau khi tốt nghiệp Bác sĩ Y khoa chuyên khoa Tim mạch trường Đại học Y khoa Sài Gòn, bác sĩ Phạm
+                Nguyễn Vinh sang Pháp tu nghiệp trong hai...</p>
+            <button class="btn-doctor">ĐẶT LỊCH HẸN</button>
+            <button class="btn-doctor2">XEM CHI TIẾT</button>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}

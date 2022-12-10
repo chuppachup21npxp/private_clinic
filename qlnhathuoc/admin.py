@@ -1,7 +1,7 @@
 from flask_admin import Admin, BaseView, expose, AdminIndexView
 from flask import request
 from flask_admin.contrib.sqla import ModelView
-from qlnhathuoc.models import UserRole
+from qlnhathuoc.models import UserRole, User, Medicine, TypeMedicine, MedicalRecord, DateMedical, Prescription, Receipt, Patient
 from qlnhathuoc import app, db, dao
 from flask_login import logout_user, current_user
 from flask import redirect
@@ -33,9 +33,6 @@ class CKTextAreaField(TextAreaField):
 
 
 
-
-
-
 class LogoutView(AuthenticatedView):
     @expose('/')
     def index(self):
@@ -46,7 +43,7 @@ class LogoutView(AuthenticatedView):
 class MyAdminView(AdminIndexView):
     @expose('/')
     def index(self):
-        stats = dao.count_product_by_cate()
+        stats = dao.count_medicine_by_cate()
         return self.render('admin/index.html', stats=stats)
 
 
