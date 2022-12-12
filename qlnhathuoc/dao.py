@@ -15,6 +15,11 @@ def auth_user(username, password):
 def get_user_by_id(user_id):
     return User.query.get(user_id)
 
+def check_user_role(current_user, role):
+    if current_user.user.user_role == role:
+        return True
+    return False;
+
 
 def register(name, username, password, avatar=None):
     password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())

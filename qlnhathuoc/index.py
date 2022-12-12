@@ -13,15 +13,15 @@ def info():
     return render_template('info.html')
 
 @app.route("/doctor")
-def doctor():
-    login_my_user()
-    return render_template('doctor.html')
+def info_doctor():
+    return render_template('info-doctor.html')
 
 @app.route("/doctor")
 @login_required
 def doctor_checkup_medical():
+    check = dao.check_user_role(current_user, UserRole.DOCTOR)
 
-    return render_template('info-doctor.html')
+    return render_template('doctor.html', check=check)
 
 
 @app.route("/contact")
@@ -70,6 +70,7 @@ def register():
 @app.route('/login', methods=['get', 'post'])
 @annonymous_user
 def login_my_user():
+    msg = ''
     if request.method.__eq__('POST'):
         username = request.form['username']
         password = request.form['password']
@@ -79,10 +80,10 @@ def login_my_user():
         if user:
             login_user(user=user)
 
-            n = request.args.get("next")
-            if user.user_role == UserRole.DOCTOR:
-                return redirect('/doctor', user=user)
-            return redirect(n if n else '/')
+            return redirect('/')
+        else:
+            msg = 'tài khoản hay mật khẩu không chính xác'
+
 
     return render_template('login.html')
 
