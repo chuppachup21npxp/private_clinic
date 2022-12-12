@@ -40,13 +40,23 @@ class LogoutView(AuthenticatedView):
         return redirect('/admin')
 
 
-class MyAdminView(AdminIndexView):
+class StatsView(AuthenticatedView):
     @expose('/')
     def index(self):
         stats = dao.count_medicine_by_cate()
-        return self.render('admin/index.html', stats=stats)
+        return self.render('admin/stats.html', stats=stats)
+
+class MyAdminView(AdminIndexView):
+    @expose('/')
+    def index(self):
+        stats = dao.stats_revenue(kw=request.args.get('kw'),
+                                  from_date=request.args.get('from_date'),
+                                  to_date=request.args.get('to_date'))
+        total = dao.total_revenue_medicine()
+        return self.render('admin/index.html', stats=stats, total=total)
 
 
 admin = Admin(app=app, name='Quản trị phòng mạch',
               template_mode='bootstrap4', index_view=MyAdminView())
+admin.add_view(StatsView(name='Thống kê - báo cáo'))
 admin.add_view(LogoutView(name='Đăng xuất'))

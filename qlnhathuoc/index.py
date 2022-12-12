@@ -21,7 +21,7 @@ def doctor():
 @login_required
 def doctor_checkup_medical():
 
-    return render_template('doctor.html')
+    return render_template('info-doctor.html')
 
 
 @app.route("/contact")

@@ -78,3 +78,8 @@ font-weight : bold;
 h3{
     color: #1691E2;
 }
+
+###########
+.medical-form-wapper {
+    border-bottom-left-radius:25px;
+}

@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'admin/master.html' %}
 
-</body>
-</html>
+{% block body %}
+<h1 class="text-center text-info">THÔNG KÊ, BÁO CÁO</h1>
+
+<div class="container mt-3">
+    <h2>Báo cáo sử dụng thuốc</h2>
+    <p>Tháng: .....</p>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>STT</th>
+                <th>Thuốc</th>
+                <th>ĐVT</th>
+                <th>Số lượng</th>
+                <th>Số lần dùng</th>
+            </tr>
+        </thead>
+        <tbody class="table-success">
+            {% for s in stats %}
+            <tr>
+                <td>{{ s[0] }}</td>
+                <td>{{ s[1] }}</td>
+                <td>{{ s[2] }}</td>
+                {% if s[3] != None  %}
+                <td>{{ "{:,.0f}".format(s[3]) }}</td>
+                {% else %}
+                <td>0</td>
+                {% endif %}
+                <td>{{ s[4] }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

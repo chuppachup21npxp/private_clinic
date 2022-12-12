@@ -5,42 +5,40 @@
 {% if current_user.is_authenticated %}
 
 <h1 class="text-center text-success">TRANG CHỦ QUẢN TRỊ PHÒNG MẠCH</h1>
-<h3>Chào <span class="text-danger">{{ current_user.name }}</span>!</h3>
+<h3>Chào <span class="text-danger">{{ current_user.fullname }}</span>!</h3>
 
-<div class="row">
-    <div class="col-md-5 col-sm-12">
-        <table class="table">
+<div class="container mt-3">
+    <h2>Doanh thu</h2>
+    <p>Tháng: .....</p>
+    <table class="table">
+        <thead class="table-dark">
             <tr>
-                <th>Id</th>
-                <th>Tên danh mục</th>
-                <th>Số lượng SP</th>
+                <th>STT</th>
+                <th>Ngày</th>
+                <th>Số bệnh nhân</th>
+                <th>Doanh thu</th>
+                <th>Tỉ lệ</th>
             </tr>
+        </thead>
+        <tbody class="table-success">
             {% for s in stats %}
             <tr>
                 <td>{{ s[0] }}</td>
                 <td>{{ s[1] }}</td>
                 <td>{{ s[2] }}</td>
+                {% if s[3] %}
+                <td>{{ "{:,.0f}".format(s[3]) }}</td>
+                {% else %}
+                <td>0</td>
+                {% endif %}
+                <td>{{ s[4] }}</td>
             </tr>
             {% endfor %}
-        </table>
-    </div>
-    <div class="col-md-7 col-sm-12">
-        <canvas id="cateStats"></canvas>
-    </div>
+        </tbody>
+    </table>
+    <div>Doanh thu: {{ total }}</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{{ url_for('static', filename='js/my-chart.js') }}"></script>
-<script>
-  let data = [], labels=[];
-  {% for s in stats %}
-    data.push({{ s[2] }})
-    labels.push('{{ s[1] }}')
-  {% endfor %}
-  window.onload = function() {
-    drawCateStats(labels, data)
-  }
-</script>
 
 {% else %}
 <h1 class="text-center text-danger">ĐĂNG NHẬP QUẢN TRỊ</h1>

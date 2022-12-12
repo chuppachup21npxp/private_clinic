@@ -39,7 +39,7 @@ class User(BaseModel, UserMixin):  ##Người dùng##
 class DateMedical(BaseModel):  ##Phiếu hẹn khám##
     date_medical = Column(DateTime, default=datetime.now())
     patient_name = Column(String(50), nullable=False)
-    is_confirm = Column(Boolean, default=False)
+    is_confirm = Column(Boolean, default=0)
     user_id = Column(Integer, ForeignKey(User.id), nullable=False)
 
     phieukhambenh = relationship('MedicalRecord', backref='datemedical', lazy=True)
@@ -88,7 +88,7 @@ class Medicine(BaseModel):
     descriptions = Column(String(500), nullable=False)
     price = Column(Float, default=0)
     unit_current = Column(String(20), nullable=False)
-    is_stop = Column(Boolean, default=False)
+    is_stop = Column(Boolean, default=0)
     type_medicine_id = Column(Integer, ForeignKey(TypeMedicine.id), nullable=False)
 
     donthuoc = relationship('Prescription', backref='medicine', lazy=True)
