@@ -50,6 +50,7 @@ class Patient(BaseModel):  ##Bệnh nhân##
     sex = Column(String(15), nullable=False)
     number_of_id_card = Column(String(20), nullable=False)
     phone_number = Column(String(12), nullable=False)
+    date_born = Column(DateTime, default=datetime.now())
 
     phieukhambenh = relationship('MedicalRecord', backref='patient', lazy=True)
 
@@ -73,7 +74,7 @@ class Receipt(BaseModel):  ##Hóa đơn##
     donthuoc = relationship('Prescription', backref='receipt', lazy=True)
 
 
-class TypeMedicine(BaseModel):
+class TypeMedicine(BaseModel): ##Loại thuốc##
     type_medicine_name = Column(String(60), nullable=False)
     short_description = Column(String(300))
 
@@ -83,7 +84,7 @@ class TypeMedicine(BaseModel):
         return self.type_medicine_name
 
 
-class Medicine(BaseModel):
+class Medicine(BaseModel):  ##Thuốc##
     medicine_name = Column(String(60), nullable=False)
     descriptions = Column(String(500), nullable=False)
     price = Column(Float, default=0)

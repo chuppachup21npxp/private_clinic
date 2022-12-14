@@ -1,32 +1,57 @@
-from flask import render_template, request, redirect, session, jsonify
+from flask import render_template, request, redirect, session, jsonify, url_for
 from qlnhathuoc import app, dao, admin, login, __init__ , models
 from flask_login import login_user, logout_user, login_required
 from qlnhathuoc.decorators import annonymous_user
 import cloudinary.uploader
+import urllib
 
 
 @app.route("/")
 def index():
+
     return render_template('index.html')
 @app.route("/info")
 def info():
     return render_template('info.html')
 
-@app.route("/doctor")
+@app.route("/info-doctor")
 def info_doctor():
     return render_template('info-doctor.html')
 
-@app.route("/doctor")
+@app.route("/doctor", methods=['post', 'get'])
 @login_required
 def doctor_checkup_medical():
+    msg1=''
     check = dao.check_user_role(current_user, UserRole.DOCTOR)
+    if check == False:
+        msg1 = 'Bạn không có quyền ở trang này'
 
-    return render_template('doctor.html', check=check)
+    return render_template('doctor/index.html', msg1=msg1, check=check)
 
 
 @app.route("/contact")
 def contact():
-    return render_template('contact.html')
+    check = True
+    return render_template('contact.html', check=check)
+
+@app.route('/login-doctor', methods=['post'])
+def login_doctor():
+    msg =''
+    username = request.form['username']
+    password = request.form['password']
+    check = dao.check_user_role()
+
+    user = dao.auth_user(username=username, password=password)
+    if user:
+        check = dao.check_user_role(user, UserRole.DOCTOR)
+        if check == True:
+            login_user(user=user)
+            return redirect('/doctor')
+        else:
+            msg = 'Bạn không có quyền truy cập vào trang này'
+    else:
+        msg = 'Tên đăng nhập hoặc mật khẩu không đúng'
+    return render_template('/doctor', msg=msg)
 
 @app.route('/login-admin', methods=['post'])
 def login_admin():
@@ -79,8 +104,10 @@ def login_my_user():
 
         if user:
             login_user(user=user)
-
-            return redirect('/')
+            check = dao.check_user_role(user, UserRole.DOCTOR)
+            if check == True:
+                return redirect(url_for('doctor_checkup_medical'))
+            return redirect(url_for('index'))
         else:
             msg = 'tài khoản hay mật khẩu không chính xác'
 

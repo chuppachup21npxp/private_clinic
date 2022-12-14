@@ -12,17 +12,20 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+
     <div class="header">
-         {% block header %}
+    {% block header %}
         {% include 'layout/header.html'  %}
+    {% endblock %}
     </div>
 
-    {% endblock %}
+
     <div class="container">
     {% block content required %}{% endblock %}
     </div>
+
     <div class="footer">
-            {% block footer %}
+    {% block footer %}
         {% include 'layout/footer.html'  %}
     {% endblock %}
     </div>

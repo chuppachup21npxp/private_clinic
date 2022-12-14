@@ -1,4 +1,5 @@
-from qlnhathuoc.models import User, Medicine, TypeMedicine, Patient, Receipt, DateMedical, MedicalRecord , Prescription
+from qlnhathuoc.models import User, Medicine, TypeMedicine, Patient, Receipt, DateMedical, MedicalRecord, Prescription, \
+    UserRole
 from qlnhathuoc import app, db
 from flask_login import current_user
 from sqlalchemy import func
@@ -15,11 +16,18 @@ def auth_user(username, password):
 def get_user_by_id(user_id):
     return User.query.get(user_id)
 
-def check_user_role(current_user, role):
-    if current_user.user.user_role == role:
+def check_user_role(user, role):
+    if user.user_role == role:
         return True
     return False;
 
+def get_patient(id=None, name=None):
+    query = Patient.query
+    if id:
+        query = query.filter(Patient.id == int(id))
+    if name:
+        query = query.filter(Patient.patient_name.contains(name))
+    return query.all()
 
 def register(name, username, password, avatar=None):
     password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())

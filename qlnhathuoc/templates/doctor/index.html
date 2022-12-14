@@ -1,17 +1,82 @@
-{% extends 'doctor/index.html' %}
+{% extends 'layout/base.html' %}
 
 {% block body %}
 
+{% block header %}
+<nav class="navbar navbar-expand-sm  navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='image/logo_desk.webp') }}" width="150px"> </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav me-auto">
+                {% if msg1 %}
+                {% else%}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('doctor_checkup_medical') }}">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('doctor_checkup_medical') }}">Bệnh nhân</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('doctor_checkup_medical') }}">Thuốc</a>
+                </li>
+                {% endif %}
+                {% if current_user.is_authenticated %}
+                {% if check == True %}
+                </li> <li class="nav-item">
+                    <a class="nav-link" href="/doctor">Khám bệnh</a>
+                </li>
+                {% else%}
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="/doctor">
+                        Chào {{ current_user.fullname }}!
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="/logout">Đăng xuất</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="/login">Đăng nhập</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
 {% if current_user.is_authenticated %}
 
-<h1 class="text-center text-success">TRANG CHỦ BÁC SĨ</h1>
-<h3>Chào <span class="text-danger">{{ current_user.fullname }}</span>!</h3>
+
+
+{% block content %}
+    {% if msg1 %}
+    <p>{{ msg1 }}</p>
+    {% else %}
+    <h1 class="text-center text-success">TRANG CHỦ BÁC SĨ</h1>
+    <div class="opacity">123</div>
+
+
+
+
+
+    {% endif%}
+{% endblock %}
 
 
 
 {% else %}
+    {% if msg %}
+    <p>{{ msg }}</p>
+    {% else %}
+
 <h1 class="text-center text-danger">ĐĂNG NHẬP TRANG BÁC SĨ</h1>
-<form method="post" action="/login-admin">
+<form method="post" action="/login-doctor">
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">Tên đăng nhập:</label>
         <input type="text" class="form-control" id="email" placeholder="Nhập tên đăng nhập" name="username">
@@ -22,6 +87,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Đăng nhập</button>
 </form>
+    {% endif %}
 {% endif %}
 
 

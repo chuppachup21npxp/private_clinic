@@ -79,6 +79,9 @@ h3{
     color: #1691E2;
 }
 
+.opacity {
+    opacity: 0;
+}
 ###########
 .medical-form-wapper {
     border-bottom-left-radius:25px;
